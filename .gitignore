@@ -1,0 +1,7 @@
+/test.js
+/node_modules
+/.vscode
+config.json
+package-lock.json
+.env
+.vercel
