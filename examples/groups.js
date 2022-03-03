@@ -34,7 +34,7 @@ main = async () => {
                     console.log("Group: " + newGroup.name + " was not found")
                 }
             })
-            .catch(err => console.error(err.toJSON().message))
+            .catch(err => console.error(err.response.data))
     }
 }
 

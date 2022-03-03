@@ -40,7 +40,7 @@ main = async () => {
                     console.log("Member: " + newMember.name + " was not found")
                 }
             })
-            .catch(err => console.error(err.toJSON().message))
+            .catch(err => console.error(err.response.data))
     }
 }
 
