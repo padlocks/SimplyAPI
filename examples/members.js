@@ -21,7 +21,7 @@ main = async () => {
     let system = new System(Config)
     let newMember = new Member(Config, data)
     // if member is not found, create it
-    if (!system.findMember(newMember.name).exists) {
+    if (!system.getMember(newMember.name).exists) {
         await newMember.create()
             .then(async (member) => {
                 // member is returned from create() method, make sure it exists

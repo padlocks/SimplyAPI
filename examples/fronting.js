@@ -17,17 +17,17 @@ main = async () => {
             .then(async (frontData) => {
                 // frontData is returned from create() method, make sure it exists
                 if (frontData) {
-                    await system.findMemberById(frontData.content.member)
+                    await system.getMemberById(frontData.content.member)
                         .then((m) => {
                             console.log("FrontHistory created: " + m.content.name)
                         })
                     
-                    // parse group data
+                    // parse frontHistory data
                     let f = new FrontHistory(Config, frontData)
-                    // delete the newly created group
+                    // delete the newly created frontHistory
                     if (await f.remove()) {
                         // successfully removed
-                        await system.findMemberById(f.member)
+                        await system.getMemberById(f.member)
                             .then((m) => {
                                 console.log("FrontHistory removed: " + m.content.name)
                             })

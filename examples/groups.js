@@ -15,7 +15,7 @@ main = async () => {
     let system = new System(Config)
     let newGroup = new Group(Config, data)
     // if group is not found, create it
-    if (!system.findGroup(newGroup.name).exists) {
+    if (!system.getGroup(newGroup.name).exists) {
         await newGroup.create()
             .then(async (group) => {
                 // group is returned from create() method, make sure it exists
