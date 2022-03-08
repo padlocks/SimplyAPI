@@ -23,6 +23,12 @@ main = async () => {
                     console.log("Group created: " + group.content.name)
                     // parse group data
                     let g = new Group(Config, group)
+                    // update the newly created group
+                    g.name = "3210"
+                    if (await g.update()) {
+                        // successfully deleted
+                        console.log("Updated group: " + g.name)
+                    }
                     // delete the newly created group
                     if (await g.delete()) {
                         // successfully deleted

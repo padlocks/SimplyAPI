@@ -29,6 +29,12 @@ main = async () => {
                     console.log("Member created: " + member.content.name)
                     // parse member data
                     let m = new Member(Config, member)
+                    // update the newly created member
+                    m.name = "Test User"
+                    if (await m.update()) {
+                        // successfully deleted
+                        console.log("Updated member: " + m.name)
+                    }
                     // delete the newly created member
                     if (await m.delete()) {
                         // successfully deleted
