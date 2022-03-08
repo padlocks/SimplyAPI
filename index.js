@@ -4,5 +4,6 @@ const Member = require('./lib/member')
 const Group = require('./lib/group')
 const FrontHistory = require('./lib/frontHistory')
 const CustomFront = require('./lib/customFront')
+const Note = require('./lib/note')
 
-module.exports = {SimplyAPI, Config, System, Member, Group, FrontHistory, CustomFront, Util};
+module.exports = {SimplyAPI, Config, System, Member, Group, FrontHistory, CustomFront, Note, Util};

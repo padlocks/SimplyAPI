@@ -1,4 +1,4 @@
-const { Config, System, CustomFront } = require('../')
+const { Config, CustomFront } = require('../')
 
 let data = {
     name: "sus",
@@ -8,7 +8,6 @@ let data = {
 }
 
 main = async () => {
-    let system = new System(Config)
     let newCustomFront = new CustomFront(Config, data)
     await newCustomFront.create()
         .then(async (customFrontData) => {
@@ -16,9 +15,9 @@ main = async () => {
         if (customFrontData) {
             console.log("CustomFront created: " + customFrontData.content.name)
 
+            // update the newly created customFront
             customFrontData.content.name = "testing"
             let c = new CustomFront(Config, customFrontData)
-            // delete the newly created group
             if (await c.update()) {
                 // successfully updated
                 console.log("CustomFront updated: " + c.name)

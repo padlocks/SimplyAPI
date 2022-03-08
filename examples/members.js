@@ -27,10 +27,10 @@ main = async () => {
                 // member is returned from create() method, make sure it exists
                 if (member) {
                     console.log("Member created: " + member.content.name)
-                    // parse member data
-                    let m = new Member(Config, member)
                     // update the newly created member
                     m.name = "Test User"
+                    // parse member data
+                    let m = new Member(Config, member)
                     if (await m.update()) {
                         // successfully deleted
                         console.log("Updated member: " + m.name)
@@ -46,7 +46,7 @@ main = async () => {
                     console.log("Member: " + newMember.name + " was not found")
                 }
             })
-            .catch(err => console.error(err.response.data))
+            .catch(err => console.error(err.message || err.response.data))
     }
 }
 
