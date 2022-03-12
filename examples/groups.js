@@ -15,7 +15,7 @@ main = async () => {
     let system = new System(Config)
     let newGroup = new Group(Config, data)
     // if group is not found, create it
-    if (!system.findGroup(newGroup.name).exists) {
+    if (!system.getGroup(newGroup.name).exists) {
         await newGroup.create()
             .then(async (group) => {
                 // group is returned from create() method, make sure it exists
@@ -23,6 +23,12 @@ main = async () => {
                     console.log("Group created: " + group.content.name)
                     // parse group data
                     let g = new Group(Config, group)
+                    // update the newly created group
+                    g.name = "3210"
+                    if (await g.update()) {
+                        // successfully deleted
+                        console.log("Updated group: " + g.name)
+                    }
                     // delete the newly created group
                     if (await g.delete()) {
                         // successfully deleted
@@ -34,7 +40,7 @@ main = async () => {
                     console.log("Group: " + newGroup.name + " was not found")
                 }
             })
-            .catch(err => console.error(err.toJSON().message))
+            .catch(err => console.error(err.message || err.response.data))
     }
 }
 
