@@ -48,6 +48,20 @@ main = async () => {
             })
             .catch(err => console.error(err.message || err.response.data))
     }
+
+    let options = {
+        name: true,
+        avatar: true,
+        pronouns: true,
+        description: true,
+        useDisplayName: false,
+        color: true
+    }
+    await system.getMember("Excalibur")
+        .then((member) => {
+            let m = new Member(Config, member)
+            m.push(options)
+        })
 }
 
 main()
