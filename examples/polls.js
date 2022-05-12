@@ -7,7 +7,7 @@ let data = {
     allowAbstain: true,
     allowVeto: true,
     endTime: Date.now() + day * 7,
-    custom: false
+    custom: true
 }
 
 main = async () => {
