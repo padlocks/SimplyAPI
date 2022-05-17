@@ -1,10 +1,14 @@
 const { SimplyAPI, Config, Util } = require('./lib/SimplyAPI')
-const System = require('./lib/system')
-const Member = require('./lib/member')
-const Group = require('./lib/group')
-const FrontHistory = require('./lib/frontHistory')
-const CustomFront = require('./lib/customFront')
-const Note = require('./lib/note')
+const AutomatedTimer = require('./lib/automatedTimer')
 const Comment = require('./lib/comment')
+const CustomFront = require('./lib/customFront')
+const Friend = require('./lib/friend')
+const FrontHistory = require('./lib/frontHistory')
+const Group = require('./lib/group')
+const Member = require('./lib/member')
+const Note = require('./lib/note')
+const Poll = require('./lib/poll')
+const RepeatedTimer = require('./lib/repeatedTimer')
+const System = require('./lib/system')
 
-module.exports = {SimplyAPI, Config, System, Member, Group, FrontHistory, CustomFront, Note, Comment, Util};
+module.exports = { Config, SimplyAPI, AutomatedTimer, Comment, CustomFront, Friend, FrontHistory, Group, Member, Note, Poll, RepeatedTimer, System, Util };
