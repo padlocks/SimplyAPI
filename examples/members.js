@@ -31,6 +31,7 @@ main = async () => {
                     m.name = "Test User"
                     // parse member data
                     let m = new Member(Config, member)
+                    let av = await m.getAvatar() // base64 encoded image
                     if (await m.update()) {
                         // successfully deleted
                         console.log("Updated member: " + m.name)
@@ -49,6 +50,7 @@ main = async () => {
             .catch(err => console.error(err.message || err.response.data))
     }
 
+    // pk push
     let options = {
         name: true,
         avatar: true,
@@ -58,7 +60,7 @@ main = async () => {
         color: true
     }
     await system.getMember("Excalibur")
-        .then((member) => {
+        .then(async (member) => {
             let m = new Member(Config, member)
             m.push(options)
         })
