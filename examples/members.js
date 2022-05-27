@@ -62,7 +62,7 @@ main = async () => {
     await system.getMember("Excalibur")
         .then(async (member) => {
             let m = new Member(Config, member)
-            m.push(options)
+            m.syncToPK(options)
         })
 }
 
