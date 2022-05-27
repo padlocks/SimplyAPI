@@ -31,7 +31,6 @@ main = async () => {
                     m.name = "Test User"
                     // parse member data
                     let m = new Member(Config, member)
-                    let av = await m.getAvatar() // base64 encoded image
                     if (await m.update()) {
                         // successfully deleted
                         console.log("Updated member: " + m.name)
