@@ -20,7 +20,7 @@ main = async () => {
 
     let members = await system.getMembers()
     for (let member of members) {
-        let proxyString = member.content.info[fieldId]
+        let proxyString = member.content.info?.[fieldId] ?? ""
         let found = false
 
         for (let pkMember of pkData) {
@@ -31,7 +31,7 @@ main = async () => {
                 let proxyTags = pkMember.proxy_tags
                 // format tags
                 for (let tag of proxyTags) {
-                    proxy += `${tag.prefix ?? ''} ${tag.suffix ?? ''}\n`
+                    proxy += `${tag.prefix ?? ''} ${tag.suffix ?? ''}`
                 }
                 // set data
                 proxyString = proxy
