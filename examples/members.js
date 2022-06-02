@@ -10,7 +10,7 @@ let data = {
     avatarUrl: "",
     private: false,
     preventTrusted: false,
-    preventFrontNotifs: false,
+    preventsFrontNotifs: false,
     info: {
         "Age": "19",
         "Likes": "bread"
@@ -28,7 +28,7 @@ main = async () => {
                 if (member) {
                     console.log("Member created: " + member.content.name)
                     // update the newly created member
-                    m.name = "Test User"
+                    member.name = "Test User"
                     // parse member data
                     let m = new Member(Config, member)
                     if (await m.update()) {
@@ -49,7 +49,23 @@ main = async () => {
             .catch(err => console.error(err.message || err.response.data))
     }
 
-    let options = {
+    //pk push
+    let syncAllMembers = {
+        options: {
+            name: true,
+            avatar: true,
+            pronouns: true,
+            description: true,
+            useDisplayName: false,
+            color: true
+        },
+        syncOptions: {
+            add: false,
+            overwrite: true,
+            privateByDefault: true
+        }
+    }
+    let syncIndividualMember = {
         name: true,
         avatar: true,
         pronouns: true,
@@ -58,9 +74,9 @@ main = async () => {
         color: true
     }
     await system.getMember("Excalibur")
-        .then((member) => {
+        .then(async (member) => {
             let m = new Member(Config, member)
-            m.push(options)
+            m.syncToPK(syncIndividualMember)
         })
 }
 
