@@ -20,7 +20,7 @@ let data = {
 main = async () => {
     let system = new System(Config)
     let newMember = new Member(Config, data)
-    //if member is not found, create it
+    // if member is not found, create it
     if (!system.getMember(newMember.name).exists) {
         await newMember.create()
             .then(async (member) => {
@@ -50,7 +50,7 @@ main = async () => {
     }
 
     //pk push
-    let options = {
+    let syncAllMembers = {
         options: {
             name: true,
             avatar: true,
@@ -65,10 +65,18 @@ main = async () => {
             privateByDefault: true
         }
     }
+    let syncIndividualMember = {
+        name: true,
+        avatar: true,
+        pronouns: true,
+        description: true,
+        useDisplayName: false,
+        color: true
+    }
     await system.getMember("Excalibur")
         .then(async (member) => {
             let m = new Member(Config, member)
-            m.syncToPK(options)
+            m.syncToPK(syncIndividualMember)
         })
 }
 
